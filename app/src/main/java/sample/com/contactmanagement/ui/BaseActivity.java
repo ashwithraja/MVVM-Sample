@@ -1,7 +1,9 @@
-package sample.com.contactmanagement;
+package sample.com.contactmanagement.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import sample.com.contactmanagement.R;
 
 public class BaseActivity extends AppCompatActivity {
 
