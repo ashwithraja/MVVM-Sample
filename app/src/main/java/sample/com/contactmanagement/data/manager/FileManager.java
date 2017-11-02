@@ -13,6 +13,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.DecimalFormat;
 
 /**
  * Created by ashwith on 2/11/17.
@@ -100,7 +101,7 @@ public class FileManager {
         File file;
         FileOutputStream outputStream;
         try {
-            file = new File(Environment.getExternalStorageDirectory(), "MyCache");
+            file = new File(Environment.getExternalStorageDirectory(), "MyCache");//https://developer.android.com/reference/android/os/Environment.html#DIRECTORY_ALARMS
 
             outputStream = new FileOutputStream(file);
             outputStream.write(content.getBytes());
@@ -128,4 +129,12 @@ public class FileManager {
         }
         return false;
     }
+
+    public static String readableFileSize(long size) {
+        if(size <= 0) return "0";
+        final String[] units = new String[] { "B", "KB", "MB", "GB", "TB" };
+        int digitGroups = (int) (Math.log10(size)/Math.log10(1024));
+        return new DecimalFormat("#,##0.#").format(size/Math.pow(1024, digitGroups)) + " " + units[digitGroups];
+    }
+
 }
